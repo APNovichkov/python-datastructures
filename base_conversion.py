@@ -50,22 +50,12 @@ def encode(number, base):
     return encoded_num
 
 def convert(digits, base1, base2):
-    """Convert given digits in base1 to digits in base2.
-    digits: str -- string representation of number (in base1)
-    base1: int -- base of given number
-    base2: int -- base to convert to
-    return: str -- string representation of number (in base2)"""
+    """Convert given digits in base1 to digits in base2."""
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base1 <= 36, 'base1 is out of range: {}'.format(base1)
     assert 2 <= base2 <= 36, 'base2 is out of range: {}'.format(base2)
-    # TODO: Convert digits from base 2 to base 16 (and vice versa)
-    # ...
-    # TODO: Convert digits from base 2 to base 10 (and vice versa)
-    # ...
-    # TODO: Convert digits from base 10 to base 16 (and vice versa)
-    # ...
-    # TODO: Convert digits from any base to any base (2 up to 36)
-    # ...
+
+    return encode(decode(digits, base1), base2)
 
 def convert_char_to_num(input_char):
     ascii_keyval = 65
@@ -85,7 +75,7 @@ def main_convert():
         base1 = int(args[1])
         base2 = int(args[2])
         # Convert given digits between bases
-        # result = convert(digits, base1, base2)
+        result = convert(digits, base1, base2)
         print('{} in base {} is {} in base {}'.format(digits, base1, result, base2))
     else:
         print('Usage: {} digits base1 base2'.format(sys.argv[0]))
@@ -115,4 +105,4 @@ def main_encode():
 
 
 if __name__ == '__main__':
-    main_encode()
+    main_convert()
