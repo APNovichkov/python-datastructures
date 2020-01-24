@@ -10,7 +10,6 @@ import string
 # string.ascii_letters is ascii_lowercase + ascii_uppercase
 # string.printable is digits + ascii_letters + punctuation + whitespace
 
-
 def decode(digits, base):
     """Decode given digits in given base to number in base 10."""
 
@@ -30,21 +29,25 @@ def decode(digits, base):
 
 
 def encode(number, base):
-    """Encode given number in base 10 to digits in given base.
-    number: int -- integer representation of number (in base 10)
-    base: int -- base to convert to
-    return: str -- string representation of number (in given base)"""
+    """Encode given number in base 10 to digits in given base."""
+
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
     # Handle unsigned numbers only for now
     assert number >= 0, 'number is negative: {}'.format(number)
-    # TODO: Encode number in binary (base 2)
-    # ...
-    # TODO: Encode number in hexadecimal (base 16)
-    # ...
-    # TODO: Encode number in any base (2 up to 36)
-    # ...
 
+    encoded_num = ""
+    while number != 0:
+        remainder = int(number % base)
+        remainder_as_char = str(remainder)
+
+        if remainder > 9:
+            remainder_as_char = convert_num_to_char(remainder)
+
+        number = int((number - remainder) / base)
+        encoded_num = "{}{}".format(remainder_as_char, encoded_num)
+
+    return encoded_num
 
 def convert(digits, base1, base2):
     """Convert given digits in base1 to digits in base2.
@@ -67,6 +70,10 @@ def convert(digits, base1, base2):
 def convert_char_to_num(input_char):
     ascii_keyval = 65
     return int(ord(input_char.upper()) - ascii_keyval) + 10
+
+def convert_num_to_char(input_num):
+    ascii_keyval = 65
+    return chr((input_num - 10 + ascii_keyval))
 
 
 def main_convert():
@@ -95,6 +102,17 @@ def main_decode():
 
     print("{} in base {} is {} in base 10!".format(digits, base, result))
 
+def main_encode():
+    import sys
+    args = sys.argv[1:]
+
+    number = int(args[0])
+    base = int(args[1])
+
+    result = encode(number, base)
+
+    print("{} in base 10 is {} in base {}!".format(number, result, base))
+
 
 if __name__ == '__main__':
-    main_decode()
+    main_encode()
