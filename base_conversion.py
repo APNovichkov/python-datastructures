@@ -12,18 +12,21 @@ import string
 
 
 def decode(digits, base):
-    """Decode given digits in given base to number in base 10.
-    digits: str -- string representation of number (in given base)
-    base: int -- base of given number
-    return: int -- integer representation of number (in base 10)"""
+    """Decode given digits in given base to number in base 10."""
+
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
-    # TODO: Decode digits from binary (base 2)
-    # ...
-    # TODO: Decode digits from hexadecimal (base 16)
-    # ...
-    # TODO: Decode digits from any base (2 up to 36)
-    # ...
+
+    output = 0
+    index = 0
+    for digit in digits:
+        if digit not in string.digits:
+            digit = convert_char_to_num(digit)
+
+        output += int(digit) * (base**(len(digits) - 1 - index))
+        index += 1
+
+    return output
 
 
 def encode(number, base):
@@ -61,8 +64,12 @@ def convert(digits, base1, base2):
     # TODO: Convert digits from any base to any base (2 up to 36)
     # ...
 
+def convert_char_to_num(input_char):
+    ascii_keyval = 65
+    return int(ord(input_char.upper()) - ascii_keyval) + 10
 
-def main():
+
+def main_convert():
     """Read command-line arguments and convert given digits between bases."""
     import sys
     args = sys.argv[1:]  # Ignore script file name
@@ -71,12 +78,23 @@ def main():
         base1 = int(args[1])
         base2 = int(args[2])
         # Convert given digits between bases
-        result = convert(digits, base1, base2)
+        # result = convert(digits, base1, base2)
         print('{} in base {} is {} in base {}'.format(digits, base1, result, base2))
     else:
         print('Usage: {} digits base1 base2'.format(sys.argv[0]))
         print('Converts digits from base1 to base2')
 
+def main_decode():
+    import sys
+    args = sys.argv[1:]
+
+    digits = args[0]
+    base = int(args[1])
+
+    result = decode(digits, base)
+
+    print("{} in base {} is {} in base 10!".format(digits, base, result))
+
 
 if __name__ == '__main__':
-    main()
+    main_decode()
