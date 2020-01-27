@@ -47,7 +47,7 @@ def encode(number, base):
         if remainder > 9:
             remainder_as_char = convert_num_to_char(remainder).lower()
 
-        number = int((number - remainder) / base)
+        number = int(number // base)
         encoded_num = "{}{}".format(remainder_as_char, encoded_num)
 
     return encoded_num
