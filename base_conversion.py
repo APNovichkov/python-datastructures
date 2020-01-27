@@ -36,13 +36,16 @@ def encode(number, base):
     # Handle unsigned numbers only for now
     assert number >= 0, 'number is negative: {}'.format(number)
 
+    if number == 0:
+        return "0"
+
     encoded_num = ""
     while number != 0:
         remainder = int(number % base)
         remainder_as_char = str(remainder)
 
         if remainder > 9:
-            remainder_as_char = convert_num_to_char(remainder)
+            remainder_as_char = convert_num_to_char(remainder).lower()
 
         number = int((number - remainder) / base)
         encoded_num = "{}{}".format(remainder_as_char, encoded_num)
