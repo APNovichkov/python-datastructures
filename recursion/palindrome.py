@@ -11,9 +11,21 @@ def is_palindrome(text):
     """Returns whether a string is a palindrome or not."""
 
     assert isinstance(text, str), 'input is not a string: {}'.format(text)
-    return is_palindrome_iterative(text)
-    # return is_palindrome_recursive(text)
 
+
+    # return is_palindrome_iterative(text)
+    return is_palindrome_recursive(strip_string(text))
+
+def strip_string(text):
+    print('input_text: {}'.format(text))
+    output = ""
+
+    for char in text:
+        if char in string.ascii_lowercase or char in string.ascii_uppercase:
+            output += char
+    print('output_text: {}'.format(output))
+
+    return output
 
 def is_palindrome_iterative(text):
     output = True
@@ -26,10 +38,25 @@ def is_palindrome_iterative(text):
 
 
 def is_palindrome_recursive(text, left=None, right=None):
-    # TODO: implement the is_palindrome function recursively here
-    pass
-    # once implemented, change is_palindrome to call is_palindrome_recursive
-    # to verify that your iterative implementation passes all tests
+
+    if left is None and right is None:
+        left = 0
+        right = len(text) - 1
+
+    print("left index: {}".format(left))
+    print("right index: {}".format(right))
+
+    if len(text) % 2 == 0:
+        if right - left == -1:
+            return True
+    else:
+        if right - left <= 1:
+            return True
+
+    if text[left] != text[right]:
+        return False
+
+    return is_palindrome_recursive(text, left + 1, right - 1)
 
 
 def main():
