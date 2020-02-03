@@ -5,6 +5,9 @@ def contains(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
 
+    if len(pattern) == 0:
+        return True
+
     started_matching = False
     pattern_index = 0
     text_first_matched_index = 0
@@ -51,6 +54,9 @@ def find_index(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
 
+    if len(pattern) == 0:
+        return 0
+
     started_matching = False
     pattern_index = 0
     text_first_matched_index = 0
@@ -96,6 +102,9 @@ def find_all_indexes(text, pattern):
 
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
+
+    if len(pattern) == 0:
+        return list(range(0, len(text)))
 
     started_matching = False
     pattern_index = 0
@@ -147,10 +156,7 @@ def find_all_indexes(text, pattern):
             loop_index += 1
 
     # Return if match not found
-    if len(output_index_list) == 0:
-        return None
-    else:
-        return output_index_list
+    return output_index_list
 
 def test_string_algorithms(text, pattern):
     found = contains(text, pattern)
