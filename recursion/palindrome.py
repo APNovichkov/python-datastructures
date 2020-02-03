@@ -12,18 +12,15 @@ def is_palindrome(text):
 
     assert isinstance(text, str), 'input is not a string: {}'.format(text)
 
-
     # return is_palindrome_iterative(text)
     return is_palindrome_recursive(strip_string(text))
 
 def strip_string(text):
-    print('input_text: {}'.format(text))
+    """Strip string of anything that is not in the letters category and return all lowercase string."""
     output = ""
-
     for char in text:
         if char in string.ascii_lowercase or char in string.ascii_uppercase:
-            output += char
-    print('output_text: {}'.format(output))
+            output += char.lower()
 
     return output
 
@@ -37,14 +34,9 @@ def is_palindrome_iterative(text):
     return output
 
 
-def is_palindrome_recursive(text, left=None, right=None):
-
-    if left is None and right is None:
-        left = 0
+def is_palindrome_recursive(text, left=0, right=None):
+    if right is None:
         right = len(text) - 1
-
-    print("left index: {}".format(left))
-    print("right index: {}".format(right))
 
     if len(text) % 2 == 0:
         if right - left == -1:
