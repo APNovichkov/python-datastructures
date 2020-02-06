@@ -1,8 +1,23 @@
 
+
 def contains(text, pattern):
+    """Call find_all_indexes with find_one set to True and return first index that is found.
+
+    Best Case: O(p)
+    Worst Case: O(n)
+
+    """
+
     return len(find_all_indexes(text, pattern, True)) != 0
 
 def find_index(text, pattern):
+    """Call find_all_indexes with find_one set to True and return first index that is found.
+
+    Best Case: O(p)
+    Worst Case: O(n)
+
+    """
+
     if len(pattern) == 0:
         return 0
 
@@ -15,7 +30,13 @@ def find_index(text, pattern):
 
 def find_all_indexes(text, pattern, find_one=False):
     """Return a list of starting indexes of all occurrences of pattern in text,
-    or an empty list if not found."""
+    or an empty list if not found.
+
+    If 'n' is length of chars in text and 'p' is length of pattern
+
+    Best Time: O(p)
+    Worst Time: O(n)
+    """
 
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
@@ -100,6 +121,7 @@ def test_string_algorithms(text, pattern):
 
 def main():
     """Read command-line arguments and test string searching algorithms."""
+
     import sys
     args = sys.argv[1:]  # Ignore script file name
     if len(args) == 2:
