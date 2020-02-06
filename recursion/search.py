@@ -8,6 +8,7 @@ def linear_search(array, item):
 
 
 def linear_search_iterative(array, item):
+    """Time Complexity: Best Case: O(1)   Worst Case: O(n)"""
     # loop over all array values until item is found
     for index, value in enumerate(array):
         if item == value:
@@ -16,6 +17,7 @@ def linear_search_iterative(array, item):
 
 
 def linear_search_recursive(array, item, index=0):
+    """Time Complexity: Best Case: O(1)   Worst Case: O(n)"""
     # Check if all of array has been traversed
     if index >= len(array):
         return None
@@ -29,16 +31,16 @@ def linear_search_recursive(array, item, index=0):
 
 
 def binary_search(array, item):
-    """Return the index of item in sorted array or None if item is not found."""
+    """Return the index of item in sorted array or None if item is not found.
+
+    Time Complexity for both Recursive and Iterative: Best Case: O(1)  Worst Case: O(logN)
+    """
 
     # return binary_search_iterative(array, item)
     return binary_search_recursive(array, item)
 
 
 def binary_search_iterative(array, item):
-    # 1 2 4 5 6 7 9 9
-    # 0 1 2 3 4 5 6 7
-
     start = 0
     end = len(array) - 1
     while(start <= end):
