@@ -1,9 +1,6 @@
 
 def contains(text, pattern):
-    if len(find_all_indexes(text, pattern, True)) != 0:
-        return True
-    else:
-        return False
+    return len(find_all_indexes(text, pattern, True)) != 0
 
 def find_index(text, pattern):
     if len(pattern) == 0:
