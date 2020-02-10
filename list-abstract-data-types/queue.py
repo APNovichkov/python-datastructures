@@ -28,12 +28,14 @@ class LinkedQueue(object):
 
     def enqueue(self, item):
         """Insert the given item at the back of this queue.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) - Can add to the end of linked list using the tail pointer"""
         self.list.append(item)
 
     def front(self):
         """Return the item at the front of this queue without removing it,
-        or None if this queue is empty."""
+        or None if this queue is empty.
+
+        Running time: O(1) - Can see data of head directly through the head pointer"""
 
         if self.is_empty():
             return None
@@ -43,7 +45,7 @@ class LinkedQueue(object):
     def dequeue(self):
         """Remove and return the item at the front of this queue,
         or raise ValueError if this queue is empty.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) - Can remove the head without having to traverse the linked list"""
 
         if self.is_empty():
             raise ValueError("Queue is empty")
@@ -79,12 +81,14 @@ class ArrayQueue(object):
 
     def enqueue(self, item):
         """Insert the given item at the back of this queue.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) – Can add items to end of list without having to shift anything over"""
         self.list.append(item)
 
     def front(self):
         """Return the item at the front of this queue without removing it,
-        or None if this queue is empty."""
+        or None if this queue is empty.
+
+        Running time: O(1) - Can access any element of list in O(1)"""
 
         if self.is_empty():
             return None
@@ -94,7 +98,7 @@ class ArrayQueue(object):
     def dequeue(self):
         """Remove and return the item at the front of this queue,
         or raise ValueError if this queue is empty.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(n) – Need to shift all items over to the left after removing first one"""
 
         if self.is_empty():
             raise ValueError("This queue is empty")
