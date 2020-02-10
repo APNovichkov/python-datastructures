@@ -20,7 +20,7 @@ class LinkedQueue(object):
 
     def is_empty(self):
         """Return True if this queue is empty, or False otherwise."""
-        return self.list.isEmpty()
+        return self.list.is_empty()
 
     def length(self):
         """Return the number of items in this queue."""
@@ -29,13 +29,13 @@ class LinkedQueue(object):
     def enqueue(self, item):
         """Insert the given item at the back of this queue.
         Running time: O(???) – Why? [TODO]"""
-        self.list.append()
+        self.list.append(item)
 
     def front(self):
         """Return the item at the front of this queue without removing it,
         or None if this queue is empty."""
 
-        if self.isEmpty():
+        if self.is_empty():
             return None
 
         return self.list.get_at_index(0)
@@ -45,7 +45,7 @@ class LinkedQueue(object):
         or raise ValueError if this queue is empty.
         Running time: O(???) – Why? [TODO]"""
 
-        if self.isEmpty():
+        if self.is_empty():
             raise ValueError("Queue is empty")
 
         out = self.list.get_at_index(0)
@@ -86,7 +86,7 @@ class ArrayQueue(object):
         """Return the item at the front of this queue without removing it,
         or None if this queue is empty."""
 
-        if self.isEmpty():
+        if self.is_empty():
             return None
 
         return self.list[0]
@@ -96,7 +96,7 @@ class ArrayQueue(object):
         or raise ValueError if this queue is empty.
         Running time: O(???) – Why? [TODO]"""
 
-        if self.isEmpty():
+        if self.is_empty():
             raise ValueError("This queue is empty")
 
         return self.list.pop(0)
