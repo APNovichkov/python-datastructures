@@ -29,12 +29,14 @@ class LinkedStack(object):
 
     def push(self, item):
         """Insert the given item on the top of this stack.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) – Linked List can make new head in O(1)"""
         self.list.prepend(item)
 
     def peek(self):
         """Return the item on the top of this stack without removing it,
-        or None if this stack is empty."""
+        or None if this stack is empty.
+
+        Running time: O(1) - Doesnt have to traverse anything to return data of head"""
 
         if self.is_empty():
             return None
@@ -44,7 +46,7 @@ class LinkedStack(object):
     def pop(self):
         """Remove and return the item on the top of this stack,
         or raise ValueError if this stack is empty.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O1 – Can remove the head of linked list in O(1)"""
 
         if self.is_empty():
             raise ValueError("Stack is empty")
@@ -80,12 +82,14 @@ class ArrayStack(object):
 
     def push(self, item):
         """Insert the given item on the top of this stack.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) – Can add to end of list without having to shift all elements over"""
         self.list.append(item)
 
     def peek(self):
         """Return the item on the top of this stack without removing it,
-        or None if this stack is empty."""
+        or None if this stack is empty.
+
+        Running time: O(1) - Can access any element in O(1)"""
 
         if self.is_empty():
             return None
@@ -95,7 +99,8 @@ class ArrayStack(object):
     def pop(self):
         """Remove and return the item on the top of this stack,
         or raise ValueError if this stack is empty.
-        Running time: O(???) – Why? [TODO]"""
+
+        Running time: O(1) – Can remove the end of list without having to shift any elements over"""
 
         if self.is_empty():
             raise ValueError("Stack is empty")
