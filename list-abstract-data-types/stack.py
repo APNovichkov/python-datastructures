@@ -94,7 +94,7 @@ class ArrayStack(object):
         if self.is_empty():
             return None
 
-        return self.list[self.length() - 1]
+        return self.list[-1]
 
     def pop(self):
         """Remove and return the item on the top of this stack,
@@ -105,10 +105,10 @@ class ArrayStack(object):
         if self.is_empty():
             raise ValueError("Stack is empty")
 
-        return self.list.pop(self.length() - 1)
+        return self.list.pop(-1)
 
 
 # Implement LinkedStack and ArrayStack above, then change the assignment below
 # to use each of your Stack implementations to verify they each pass all tests
-Stack = LinkedStack
-# Stack = ArrayStack
+# Stack = LinkedStack
+Stack = ArrayStack
