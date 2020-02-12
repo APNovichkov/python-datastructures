@@ -16,6 +16,16 @@ def decode(digits, base):
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
 
+    if '.' in digits:
+        whole_out = decode_digits(digits.split('.')[0], base)
+        frac_out = decode_digits(digits.split('.')[1], base)
+
+        return f'{whole_out}.{frac_out}'
+    else:
+        return decode_digits(digits, base)
+
+
+def decode_digits(digits, base):
     output = 0
     index = 0
     for digit in digits:
@@ -27,18 +37,27 @@ def decode(digits, base):
 
     return output
 
-
 def encode(number, base):
     """Encode given number in base 10 to digits in given base."""
 
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
     # Handle unsigned numbers only for now
-    assert number >= 0, 'number is negative: {}'.format(number)
+    assert float(number) >= 0.0, 'number is negative: {}'.format(number)
 
-    if number == 0:
+    if float(number) == 0.0:
         return "0"
 
+    if '.' in number:
+        whole_out = encode_number(number.split('.')[0], base)
+        frac_out = encode_number(number.split('.')[1], base)
+
+        return f'{whole_out}.{frac_out}'
+    else:
+        return encode_number(number, base)
+
+def encode_number(number, base):
+    number = int(number)
     encoded_num = ""
     while number != 0:
         remainder = int(number % base)
@@ -99,7 +118,7 @@ def main_encode():
     import sys
     args = sys.argv[1:]
 
-    number = int(args[0])
+    number = args[0]
     base = int(args[1])
 
     result = encode(number, base)
@@ -108,4 +127,4 @@ def main_encode():
 
 
 if __name__ == '__main__':
-    main_convert()
+    main_encode()
