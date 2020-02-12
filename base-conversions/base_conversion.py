@@ -79,6 +79,7 @@ def convert(digits, base1, base2):
 
     return encode(decode(digits, base1), base2)
 
+
 def convert_char_to_num(input_char):
     ascii_keyval = 65
     return int(ord(input_char.upper()) - ascii_keyval) + 10
@@ -127,4 +128,4 @@ def main_encode():
 
 
 if __name__ == '__main__':
-    main_encode()
+    main_convert()
