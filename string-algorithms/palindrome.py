@@ -12,8 +12,8 @@ def is_palindrome(text):
 
     assert isinstance(text, str), 'input is not a string: {}'.format(text)
 
-    # return is_palindrome_iterative(text)
-    return is_palindrome_recursive(strip_string(text))
+    return is_palindrome_iterative(strip_string(text))
+    # return is_palindrome_recursive(strip_string(text))
 
 def strip_string(text):
     """Strip string of anything that is not in the letters category and return all lowercase string."""
@@ -27,7 +27,7 @@ def strip_string(text):
 def is_palindrome_iterative(text):
     output = True
     for index, value in enumerate(text):
-        if value != text[len(text) - 1 - index] and index > len(text) // 2:
+        if value != text[len(text) - 1 - index] and index < len(text) // 2:
             output = False
             break
 
