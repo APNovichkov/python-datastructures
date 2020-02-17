@@ -30,11 +30,12 @@ def decode(digits, base):
 def decode_digits(digits, base):
     output = 0
     index = 0
+    digits_len = len(digits) - 1
     for digit in digits:
         if digit not in string.digits:
             digit = convert_char_to_num(digit)
 
-        output += int(digit) * (base**(len(digits) - 1 - index))
+        output += int(digit) * (base**(digits_len - index))
         index += 1
 
     return output
