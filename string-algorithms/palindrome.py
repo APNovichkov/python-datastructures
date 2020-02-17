@@ -27,7 +27,7 @@ def strip_string(text):
 def is_palindrome_iterative(text):
     output = True
     for index, value in enumerate(text):
-        if value != text[len(text) - 1 - index] and index < len(text) // 2:
+        if value != text[len(text) - 1 - index] and index >= len(text) // 2:
             output = False
             break
 
