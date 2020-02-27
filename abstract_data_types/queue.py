@@ -1,6 +1,6 @@
 #!python
 
-from linked_list import LinkedList
+from linkedlist import LinkedList
 
 
 # Implement LinkedQueue below, then change the assignment at the bottom
